@@ -1,0 +1,124 @@
+{
+	"ImportPath": "github.com/frodenas/syslog-to-metron",
+	"GoVersion": "go1.6",
+	"GodepVersion": "v60",
+	"Packages": [
+		"./..."
+	],
+	"Deps": [
+		{
+			"ImportPath": "github.com/cloudfoundry/dropsonde",
+			"Rev": "c54d59a8cf4da00b0461ac8e39171a02b84ce86e"
+		},
+		{
+			"ImportPath": "github.com/cloudfoundry/dropsonde/emitter",
+			"Rev": "c54d59a8cf4da00b0461ac8e39171a02b84ce86e"
+		},
+		{
+			"ImportPath": "github.com/cloudfoundry/dropsonde/envelope_sender",
+			"Rev": "c54d59a8cf4da00b0461ac8e39171a02b84ce86e"
+		},
+		{
+			"ImportPath": "github.com/cloudfoundry/dropsonde/envelopes",
+			"Rev": "c54d59a8cf4da00b0461ac8e39171a02b84ce86e"
+		},
+		{
+			"ImportPath": "github.com/cloudfoundry/dropsonde/factories",
+			"Rev": "c54d59a8cf4da00b0461ac8e39171a02b84ce86e"
+		},
+		{
+			"ImportPath": "github.com/cloudfoundry/dropsonde/instrumented_handler",
+			"Rev": "c54d59a8cf4da00b0461ac8e39171a02b84ce86e"
+		},
+		{
+			"ImportPath": "github.com/cloudfoundry/dropsonde/instrumented_round_tripper",
+			"Rev": "c54d59a8cf4da00b0461ac8e39171a02b84ce86e"
+		},
+		{
+			"ImportPath": "github.com/cloudfoundry/dropsonde/log_sender",
+			"Rev": "c54d59a8cf4da00b0461ac8e39171a02b84ce86e"
+		},
+		{
+			"ImportPath": "github.com/cloudfoundry/dropsonde/logs",
+			"Rev": "c54d59a8cf4da00b0461ac8e39171a02b84ce86e"
+		},
+		{
+			"ImportPath": "github.com/cloudfoundry/dropsonde/metric_sender",
+			"Rev": "c54d59a8cf4da00b0461ac8e39171a02b84ce86e"
+		},
+		{
+			"ImportPath": "github.com/cloudfoundry/dropsonde/metricbatcher",
+			"Rev": "c54d59a8cf4da00b0461ac8e39171a02b84ce86e"
+		},
+		{
+			"ImportPath": "github.com/cloudfoundry/dropsonde/metrics",
+			"Rev": "c54d59a8cf4da00b0461ac8e39171a02b84ce86e"
+		},
+		{
+			"ImportPath": "github.com/cloudfoundry/dropsonde/runtime_stats",
+			"Rev": "c54d59a8cf4da00b0461ac8e39171a02b84ce86e"
+		},
+		{
+			"ImportPath": "github.com/cloudfoundry/gosteno",
+			"Comment": "scotty_09012012-42-g0c8581c",
+			"Rev": "0c8581caea35ac903728230e447792e2365dcc34"
+		},
+		{
+			"ImportPath": "github.com/cloudfoundry/gosteno/syslog",
+			"Comment": "scotty_09012012-42-g0c8581c",
+			"Rev": "0c8581caea35ac903728230e447792e2365dcc34"
+		},
+		{
+			"ImportPath": "github.com/cloudfoundry/sonde-go/events",
+			"Rev": "64ff74a60c9558e7fcb55c9d22eff49412ec5826"
+		},
+		{
+			"ImportPath": "github.com/gogo/protobuf/gogoproto",
+			"Comment": "v0.2-22-g2752d97",
+			"Rev": "2752d97bbd91927dd1c43296dbf8700e50e2708c"
+		},
+		{
+			"ImportPath": "github.com/gogo/protobuf/proto",
+			"Comment": "v0.2-22-g2752d97",
+			"Rev": "2752d97bbd91927dd1c43296dbf8700e50e2708c"
+		},
+		{
+			"ImportPath": "github.com/gogo/protobuf/protoc-gen-gogo/descriptor",
+			"Comment": "v0.2-22-g2752d97",
+			"Rev": "2752d97bbd91927dd1c43296dbf8700e50e2708c"
+		},
+		{
+			"ImportPath": "github.com/nu7hatch/gouuid",
+			"Rev": "179d4d0c4d8d407a32af483c2354df1d2c91e6c3"
+		},
+		{
+			"ImportPath": "github.com/pivotal-golang/lager",
+			"Rev": "be52ae622d25728f17aac7330e4565201c19155c"
+		},
+		{
+			"ImportPath": "gopkg.in/mcuadros/go-syslog.v2",
+			"Comment": "v2.2.0",
+			"Rev": "d3055b9994b88519219253c3d4d4b0fead2abc94"
+		},
+		{
+			"ImportPath": "gopkg.in/mcuadros/go-syslog.v2/format",
+			"Comment": "v2.2.0",
+			"Rev": "d3055b9994b88519219253c3d4d4b0fead2abc94"
+		},
+		{
+			"ImportPath": "gopkg.in/mcuadros/go-syslog.v2/internal/syslogparser",
+			"Comment": "v2.2.0",
+			"Rev": "d3055b9994b88519219253c3d4d4b0fead2abc94"
+		},
+		{
+			"ImportPath": "gopkg.in/mcuadros/go-syslog.v2/internal/syslogparser/rfc3164",
+			"Comment": "v2.2.0",
+			"Rev": "d3055b9994b88519219253c3d4d4b0fead2abc94"
+		},
+		{
+			"ImportPath": "gopkg.in/mcuadros/go-syslog.v2/internal/syslogparser/rfc5424",
+			"Comment": "v2.2.0",
+			"Rev": "d3055b9994b88519219253c3d4d4b0fead2abc94"
+		}
+	]
+}
