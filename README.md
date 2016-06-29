@@ -1,10 +1,44 @@
 # Syslog server to forward log messages to Metron
 
-This is an experimental utility to forward syslog messages to [Cloud Foundry Loggregator](https://github.com/cloudfoundry/loggregator).
+This is an experimental utility to forward syslog messages to [Cloud Foundry Metron](https://github.com/cloudfoundry/loggregator/tree/develop/src/metron).
 
 ## Disclaimer
 
 This is a work in progress. It is suitable for experimentation and may not become supported in the future.
+
+## Sample usage
+
+### Deploy a sample application
+
+Deploy a sample application to your Cloud Foundry environment and look for the application `guid`:
+
+```
+CF_TRACE=true cf app <APP-NAME> | grep guid
+```
+
+### Run the utility
+
+Build and run this utility. [Metron](https://github.com/cloudfoundry/loggregator/tree/develop/src/metron) only listens to local network interfaces, so you must run the `syslog-to-metron` utility on the machine where the `metron_agent` process is running. You also need to specify the application `guid`.
+
+```
+syslog-to-metron -debug -metron-address 127.0.0.1:3457 -metron-origin my-service -syslog-address 0.0.0.0:10514 -syslog-protocol UDP -syslog-format RFC3164 -source-type SRV -source-instance 0 -app-id <APP-GUID>
+```
+
+### Forward your logs to the utility syslog server
+
+Run a service and forward the logs the the `syslog-to-metron` syslog server. In this example we are using [Docker](https://www.docker.com/) and the [syslog logging driver](https://docs.docker.com/engine/admin/logging/overview/).
+
+```
+docker run --name redis --log-driver=syslog --log-opt syslog-address=udp://<IP ADDRESS WHERE syslog-to-metron IS RUNNING>:10514 --log-opt syslog-format=rfc3164 -d redis
+```
+
+### Check you application logs
+
+Check you application logs. The service logs must appear mixed with the application logs.
+
+```
+cf logs <APP-NAME>
+```
 
 ## Contributing
 
