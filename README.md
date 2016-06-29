@@ -23,7 +23,7 @@ Build and run this utility. [Metron](https://github.com/cloudfoundry/loggregator
 ```
 syslog-to-metron -debug \
   -metron-address 127.0.0.1:3457 \
-  -metron-origin my-service \
+  -metron-origin syslog-to-metron \
   -syslog-address 0.0.0.0:10514 \
   -syslog-protocol UDP \
   -syslog-format RFC3164 \

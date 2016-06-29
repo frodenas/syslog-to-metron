@@ -42,7 +42,7 @@ func (m *appID) Set(value string) error {
 func main() {
 	flag.BoolVar(&debug, "debug", false, "Output debug logging")
 	flag.StringVar(&metronAddress, "metron-address", "127.0.0.1:3457", "Metron address (e.g. 127.0.0.1:3457)")
-	flag.StringVar(&metronOrigin, "metron-origin", "", "Source name for logs emitted by this process (e.g. redis)")
+	flag.StringVar(&metronOrigin, "metron-origin", "syslog-to-metron", "Source name for logs emitted by this process (e.g. redis)")
 	flag.StringVar(&syslogAddress, "syslog-address", "127.0.0.1:10514", "Syslog Listen Address (e.g. 127.0.0.1:10514)")
 	flag.StringVar(&syslogProtocol, "syslog-protocol", "UDP", "Syslog Protocol (TCP|UDP|Unix)")
 	flag.StringVar(&syslogFormat, "syslog-format", "Automatic", "Syslog Format (RFC3164,RFC5424,RFC6587,Automatic)")
@@ -124,14 +124,22 @@ func main() {
 				continue
 			}
 
-			for _, appID := range appIDs {
-				logger.Debug("dropsonde", lager.Data{"appID": appID, "message": message, "sourceType": sourceType, "sourceInstance": sourceInstance})
-				if err := logs.SendAppLog(appID, message, sourceType, sourceInstance); err != nil {
-					logger.Error("dropsonde", fmt.Errorf("Error sending logs to Dropsonde: '%s'", err))
+			if len(appIDs) != 0 {
+				for _, appID := range appIDs {
+					sendAppLog(logger, appID, message, sourceType, sourceInstance)
 				}
+			} else if logParts["app_name"] != nil {
+				sendAppLog(logger, logParts["app_name"].(string), message, sourceType, sourceInstance)
 			}
 		}
 	}(logChannel)
 
 	server.Wait()
+}
+
+func sendAppLog(logger lager.Logger, appID, message, sourceType, sourceInstance string) {
+	logger.Debug("dropsonde", lager.Data{"appID": appID, "message": message, "sourceType": sourceType, "sourceInstance": sourceInstance})
+	if err := logs.SendAppLog(appID, message, sourceType, sourceInstance); err != nil {
+		logger.Error("dropsonde", fmt.Errorf("Error sending logs to Dropsonde: '%s'", err))
+	}
 }
